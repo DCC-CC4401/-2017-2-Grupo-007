@@ -11,6 +11,3 @@ class Denuncia(models.Model):
     foto = models.CharField(max_length=200)
     usuario = models.ForeignKey(User)
 
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
