@@ -11,3 +11,4 @@ class Animal(models.Model):
     sexo = models.CharField(max_length=1)
     edad = models.IntegerField()
     fecha_ingreso = models.DateTimeField(max_length=50)
+

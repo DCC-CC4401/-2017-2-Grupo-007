@@ -4,6 +4,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Denuncia(models.Model):
     nombre = models.CharField(max_length=50)
     rut = models.CharField(max_length=15)
@@ -12,3 +13,6 @@ class Denuncia(models.Model):
     sexo = models.CharField(max_length=2)
     usuario = models.ForeignKey(User)
 
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
