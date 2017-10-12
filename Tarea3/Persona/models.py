@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Denuncia(models.Model):
+class Persona(models.Model):
     nombre = models.CharField(max_length=50)
     rut = models.CharField(max_length=15)
     email = models.EmailField()

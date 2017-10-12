@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Denuncia(models.Model):
+class ONG(models.Model):
     nombre = models.CharField(max_length=50)
     ubicacion = models.CharField(max_length=50)
     foto = models.CharField(max_length=200)
