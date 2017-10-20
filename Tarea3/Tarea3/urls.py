@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from Tarea3.Persona import views
+from Persona import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^signup/$', views.signup, name='signup'),
