@@ -20,5 +20,6 @@ from Persona.views import signup
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('Persona.urls', namespace='persona')),
-    url(r'^denuncia/$', include('Denuncia.urls', namespace='denuncia')),
+    url(r'^denuciar/$', views.denunciar, name='denunciar'),
+    url(r'^denuncia/$', include('Denuncia.urls', namespace='denuncia'))
 ]
