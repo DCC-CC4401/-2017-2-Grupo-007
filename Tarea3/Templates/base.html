@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block tabtitle %}{% endblock tabtitle %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    {% load static %}
+
+    {% block jsbase %}
+    {% endblock jsbase %}
+
+    {% block jsextra %}
+    {% endblock jsextra %}
+
+    {% block cssbase %}
+    {% endblock cssbase %}
+
+    {% block cssextra %}
+    {% endblock cssextra %}
+
+    {% block styles %}
+    {% endblock styles %}
+</head>
+
+<body style="height: 100%">
+    {% block navbar %}
+    {% endblock navbar %}
+
+    {% block cuerpo %}
+    {% endblock cuerpo %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block specificjs %}
+    {% endblock specificjs %}
+</body>
+</html>
