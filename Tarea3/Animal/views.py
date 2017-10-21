@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def ficha(request):
+    return render(request, 'fichaAnimal.html', {})

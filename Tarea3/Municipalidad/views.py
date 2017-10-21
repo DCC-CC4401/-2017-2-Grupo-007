@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 # Create your views here.
-def municipalidades(request):
+def muni(request):
     return render(request, 'muni.html', {})

@@ -21,8 +21,8 @@ from Municipalidad import views as v2
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('Persona.urls', namespace='persona')),
-    url(r'^denuciar/$', v1.denunciar, name='denunciar'),
+    url(r'^Denuncia/', include('Denuncia.urls')),
+    url(r'^Animal/', include('Animal.urls')),
+    url(r'^Municipalidad/', include('Municipalidad.urls')),
 
-    url(r'^denuncia/$', include('Denuncia.urls', namespace='denuncia')),
-    url(r'^municipalidades/$', v2.municipalidades, name='municipalidades')
 ]
