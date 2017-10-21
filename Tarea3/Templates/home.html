@@ -60,73 +60,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Ingresar</a>
+                        <a href="#" data-toggle="myModal">Ingresar</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="treeview active menu-open">
-                    <a href="#">
-                        <i class="fa fa-search"></i>
-                        <span>Adoptar</span>
-                        <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                    </a>
-                    <ul class="treeview-menu c-filtro-adoptar">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Tipo
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Perro</option>
-                                <option>Gato</option>
-                                <option>Loro</option>
-                                <option>Vaca</option>
-                                <option>Caballo</option>
-                            </select>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Edad
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>0-1</option>
-                                <option>2-4</option>
-                                <option>4-10</option>
-                            </select>
-                        </div>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Denunciar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-star"></i>
-                        <span>ONG</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+    {% block aside %}
 
+    {% endblock aside %}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
