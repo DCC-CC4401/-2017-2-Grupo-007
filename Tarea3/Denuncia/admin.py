@@ -5,7 +5,7 @@ from .models import Denuncia
 # Register your models here.
 
 class DenunciaAdmin(admin.ModelAdmin):
-    list_display = ('tipo', 'estado', 'lugar', 'herido', 'persona')
+    list_display = ('tipo', 'estado', 'lugar', 'herido', 'persona', 'fecha')
     search_fields = ('tipo', 'estado', 'herido', 'persona')
 
 
