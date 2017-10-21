@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block aplicacion %}
+    <img src="{% static 'distrib/img/mapa.png' %}" style="width: 100%;" usemap="#locationsmap">
+
+    <map name="locationsmap">
+
+    </map>
+{% endblock aplicacion %}
