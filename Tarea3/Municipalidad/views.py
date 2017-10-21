@@ -5,7 +5,9 @@ from django.http import HttpResponse
 def muni(request):
     return render(request, 'muni.html', {})
 
-def ultimas_denuncias(request):
-    ult = Denuncia.objects.order_by('-pub_date')[:5]
-    output = ', '.join([q.question_text for q in ult])
+def ultimasdenuncias(request):
+    ult = Denuncia.objects.order_by('-fecha')[:5]
     return HttpResponse(output)
+
+def tablas(request):
+    return render(request, 'TablasMuni.html', {})

@@ -1,6 +1,7 @@
 # Create your models here.
 from django.db import models
 from Persona.models import Persona
+from django.utils import timezone
 
 
 class Denuncia(models.Model):
@@ -11,3 +12,4 @@ class Denuncia(models.Model):
     color = models.CharField(max_length=50)
     herido = models.CharField(max_length=2)
     persona = models.ForeignKey(Persona, null=True, blank=True)
+    fecha= models.DateTimeField(default=timezone.now());
