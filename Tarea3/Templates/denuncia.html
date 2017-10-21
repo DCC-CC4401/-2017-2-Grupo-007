@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-<head>
+{% extends "home.html" %}
+{% load static %}
+
+{% block titulo %}
+    Haz Tu Denuncia
+{% endblock titulo %}
+
+{% block aplicacion %}
+  <head>
     <title>Haz tu denuncia</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -16,7 +21,7 @@
 <div class="content container">
     <div class="row">
         <div class="col-md-8">
-            <h1>New post</h1>
+
             <form method="POST" class="post-form">{% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="save btn btn-default">Save</button>
@@ -25,4 +30,4 @@
     </div>
 </div>
 </body>
-</html>
+{% endblock aplicacion %}

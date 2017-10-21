@@ -1,6 +1,10 @@
 {% extends "home.html" %}
 {% load static %}
 
+{% block titulo %}
+    Cholito
+{% endblock titulo %}
+
 {% block aplicacion %}
     <img src="{% static 'distrib/img/mapa.png' %}" style="width: 100%;" usemap="#locationsmap">
 
