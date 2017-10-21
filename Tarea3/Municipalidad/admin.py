@@ -5,7 +5,7 @@ from .models import Municipalidad
 # Register your models here.
 
 class MunicipalidadAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'ubicacion', 'usuario')
+    list_display = ('nombre', 'comuna', 'direccion', 'usuario')
     search_fields = ('nombre', 'usuario')
 
 

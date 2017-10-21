@@ -1,6 +1,9 @@
 {% extends "home.html" %}
 {% load static %}
 
+{% block titulo %}
+    Cholito
+{% endblock titulo %}
 {% block aside %}
 <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -45,7 +48,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'denuncia:denunciar' %}">
                         <i class="fa fa-bullhorn"></i>
                         <span>Denunciar</span>
                     </a>
