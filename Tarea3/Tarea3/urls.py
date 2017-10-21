@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from Denuncia import views as v1
-from Persona.views import signup
-from Municipalidad import views as v2
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('Persona.urls', namespace='persona')),
