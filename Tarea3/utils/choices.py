@@ -45,3 +45,10 @@ comunaChoice = (
     ('QU', 'Quilicura'),
     ('VI', 'Vitacura')
 )
+
+estadoChoice = (
+    ('RE','Reportado'),
+    ('CON', 'Consolidado'),
+    ('VE', 'Verificadas'),
+    ('DE', 'Desechadas')
+)
