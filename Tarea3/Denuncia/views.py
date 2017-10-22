@@ -8,13 +8,13 @@ from django.http import HttpResponseRedirect
 def denunciar(request):
     if request.POST:
         print(request.POST)
-        estado= request.POST.get('estado')
+        comuna= request.POST.get('comuna')
         lugar= request.POST.get('lugar')
         tipo = request.POST.get('tipo')
         sexo = request.POST.get('sexo')
         color = request.POST.get('color')
         herido = request.POST.get('herido')
-        denunciar_obj= Denuncia(estado=estado, lugar=lugar, tipo=tipo, sexo= sexo, color=color, herido = herido)
+        denunciar_obj= Denuncia(comuna=comuna, lugar=lugar, tipo=tipo, sexo= sexo, color=color, herido = herido)
         denunciar_obj.save()
         return HttpResponseRedirect('/')
     else:

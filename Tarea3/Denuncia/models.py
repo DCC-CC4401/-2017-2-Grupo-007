@@ -2,12 +2,18 @@
 from django.db import models
 from Persona.models import Persona
 from django.utils import timezone
-from utils.choices import tipoAnimal, sexoChoice, colorChoice, heridoChoice
+from utils.choices import tipoAnimal, sexoChoice, colorChoice, heridoChoice, comunaChoice
 
 
 class Denuncia(models.Model):
     estado = models.CharField(max_length=50)
-    lugar = models.CharField(max_length=50)
+    comuna= models.CharField(
+        choices=comunaChoice,
+        max_length=50,
+        default='SA'
+
+    )
+    direccion = models.CharField(max_length=50)
     tipo = models.CharField(
         choices=tipoAnimal,
         max_length=50
