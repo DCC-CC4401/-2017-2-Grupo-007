@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Denuncia
-
+import os
 
 # Register your models here.
 
@@ -10,3 +10,4 @@ class DenunciaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Denuncia, DenunciaAdmin)
+
