@@ -1,9 +1,56 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+{% extends "home.html" %}
+{% load static %}
+
+{% block titulo %}
+    Denuncias más recientes
+{% endblock titulo %}
+
+{% block aplicacion %}
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+{% if ult_list %}
+
+    <table>
+    <tr>
+        <th>Comuna</th>
+        <th>Animal</th>
+        <th>sexo</th>
+        <th>Herido</th>
+        <th>Fecha de Denuncia</th>
+    </tr>
+
+    {% for Denuncia in ult_list %}
+        <tr>
+            <th><a href="#"> {{ Denuncia.comuna }}</a></th>
+            <th>{{ Denuncia.tipo }}</th>
+            <th>{{ Denuncia.sexo }}</th>
+            <th>{{ Denuncia.herido }}</th>
+            <th>{{ Denuncia.fecha }}</th>
+        </tr>
     {% endfor %}
-    </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No hay denuncias disponibles en tu comuna.</p>
 {% endif %}
+</table>
+
+</body>
+{% endblock aplicacion %}
+</html>
