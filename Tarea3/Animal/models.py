@@ -1,4 +1,5 @@
 from django.db import models
+from ONG.models import ONG
 
 
 class Animal(models.Model):
@@ -8,3 +9,4 @@ class Animal(models.Model):
     sexo = models.CharField(max_length=1)
     edad = models.IntegerField()
     fecha_ingreso = models.DateTimeField(max_length=50)
+    ong_responsable = models.ForeignKey(ONG, null=True)

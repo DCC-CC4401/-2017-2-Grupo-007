@@ -34,7 +34,7 @@ class ONGRegisterForm(forms.Form):
 
         print(uploaded_file_url)
 
-        ong = ONG(nombre=self.cleaned_data['nombre'], ubicacion=self.cleaned_data['ubicacion'], foto=self.cleaned_data['foto'], usuario=user)
+        ong = ONG(nombre=self.cleaned_data['nombre'], ubicacion=self.cleaned_data['ubicacion'], foto=self.cleaned_data['foto'], administrador=user)
         ong.save()
 
         login(user.username, user.password)
