@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import Group, User
 from utils.choices import comunaChoice
 from Municipalidad.models import Municipalidad
+from utils.choices import estadoChoice
 
 
 class MunicipalidadRegisterForm(forms.Form):
@@ -29,3 +30,7 @@ class MunicipalidadRegisterForm(forms.Form):
         muni = Municipalidad(nombre=self.cleaned_data['nombre'], comuna=self.cleaned_data['comuna'],
                              direccion=self.cleaned_data['dierccion'], foto=self.cleaned_data['foto'], usuario=user)
         muni.save()
+
+
+class Gestionar(forms.Form):
+    estado = forms.ChoiceField(widget=forms.Select(), choices=estadoChoice)
