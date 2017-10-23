@@ -6,6 +6,9 @@ from django.shortcuts import render, redirect
 from Persona.models import Persona
 from Municipalidad.models import Municipalidad
 from ONG.models import ONG
+from Persona.forms import PersonRegisterForm
+from Municipalidad.forms import MunicipalidadRegisterForm
+from ONG.forms import ONGRegisterForm
 
 
 def home(request):
@@ -50,20 +53,17 @@ def home(request):
             return render(request, 'Landing.html', {'error': "Nombre de usuario o cotraseña invalidos"})
 
     else:
-        logout(request)
         return render(request, 'Landing.html', {})
 
 
 def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
+    if request.POST:
+        print(request.POST)
+
     else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+
+        form_persona = PersonRegisterForm()
+        form_muni = MunicipalidadRegisterForm()
+        form_ong = ONGRegisterForm()
+
+        return render(request, 'signup.html', {'person': form_persona, 'muni': form_muni, 'ong': form_ong})

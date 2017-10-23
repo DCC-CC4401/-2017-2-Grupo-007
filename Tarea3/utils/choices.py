@@ -13,6 +13,12 @@ sexoChoice = (
     ('F', 'Hembra'),
     ('M', 'Macho')
 )
+
+sexoPersonaChoices = (
+    ('F', 'Femenino'),
+    ('M', 'Masculino')
+)
+
 colorChoice = (
     ('A', 'Amarillo'),
     ('C', 'Cafe'),

@@ -12,7 +12,7 @@ class Municipalidad(models.Model):
         choices = comunaChoice
     )
     direccion = models.CharField(max_length=50)
-    foto = models.CharField(max_length=200)
+    foto = models.ImageField()
     usuario = models.ForeignKey(User)
 
 
