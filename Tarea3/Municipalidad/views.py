@@ -16,7 +16,7 @@ def muni(request):
 def ultimasdenuncias(request):
     if request.user.is_authenticated:
         comuna_actual = Municipalidad.objects.get(usuario_id=request.user.id).comuna
-        ult_list = Denuncia.objects.filter(comuna=comuna_actual)  # foreign key a comuna del usuario
+        ult_list = Denuncia.objects.filter(comuna=comuna_actual)
         ult_list.order_by('-fecha')[:5]
         template = loader.get_template('estadisticas1.html')
         context = {

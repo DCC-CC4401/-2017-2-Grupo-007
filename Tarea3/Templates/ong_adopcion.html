@@ -1,0 +1,33 @@
+{% extends "ong.html" %}
+
+{% block aplicacion %}
+    <table id="example2" class="table table-bordered table-hover">
+        {% if ult_list %}
+            <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Sexo</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for Animal in ult_list %}
+                <tr>
+                    <td style="vertical-align:middle;">
+                    </td>
+                    <td style="vertical-align:middle;">{{ Animal.nombre }}</td>
+                    <td style="vertical-align:middle;">{{ Animal.tipo }}</td>
+                    <td style="vertical-align:middle;">{{ Animal.sexo }}</td>
+
+                </tr>
+            {% endfor %}
+
+            {% else %}
+            <p style="color: white">No hay animales en adopcion en esta ong.</p>
+            </tbody>
+            </table>
+        {% endif %}
+
+{% endblock aplicacion %}
