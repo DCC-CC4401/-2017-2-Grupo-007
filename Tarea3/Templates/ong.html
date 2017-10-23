@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="#">
+                                <a href="{%  url 'animal:enadopcion' %}">
                                     <i class="fa fa-circle-o"></i>
                                     Buscan hogar
                                 </a>
@@ -163,100 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="c-box__body__header">
                                     <a href="#" class="btn btn-success">Agregar</a>
                                 </div>
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Foto</th>
-                                            <th>Nombre</th>
-                                            <th>Tipo</th>
-                                            <th>Sexo</th>
-                                            <th>Solicitudes</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="vertical-align:middle;">
-                                                <img src="{% static 'distrib/img/perro-100x100.jpg' %}" alt="Foto de Candy" width="35">
-                                            </td>
-                                            <td style="vertical-align:middle;">Candy</td>
-                                            <td style="vertical-align:middle;">Perro</td>
-                                            <td style="vertical-align:middle;">Hembra</td>
-                                            <td>0</td>
-                                            <td style="text-align:right;vertical-align:middle;">
-                                                <a href="#" type="button" class="btn btn-xs btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                    &nbsp; Ver
-                                                </a>
-                                                &nbsp;&nbsp;
-                                                <a href="#" type="button" class="btn btn-xs btn-primary">
-                                                    <i class="fa fa-pencil"></i>
-                                                    &nbsp; Editar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="vertical-align:middle;">
-                                                <img src="{% static 'distrib/img/gato-100x100.jpg' %}" alt="Foto de Candy" width="35">
-                                            </td>
-                                            <td style="vertical-align:middle;">Tomás</td>
-                                            <td style="vertical-align:middle;">Gato</td>
-                                            <td style="vertical-align:middle;">Macho</td>
-                                            <td>3</td>
-                                            <td style="text-align:right;vertical-align:middle;">
-                                                <a href="#" type="button" class="btn btn-xs btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                    &nbsp; Ver
-                                                </a>
-                                                &nbsp;&nbsp;
-                                                <a href="#" type="button" class="btn btn-xs btn-primary">
-                                                    <i class="fa fa-pencil"></i>
-                                                    &nbsp; Editar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="vertical-align:middle;">
-                                                <img src="{% static 'distrib/img/perro-100x100.jpg' %}" alt="Foto de Candy" width="35">
-                                            </td>
-                                            <td style="vertical-align:middle;">Candy</td>
-                                            <td style="vertical-align:middle;">Perro</td>
-                                            <td style="vertical-align:middle;">Hembra</td>
-                                            <td>0</td>
-                                            <td style="text-align:right;vertical-align:middle;">
-                                                <a href="#" type="button" class="btn btn-xs btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                    &nbsp; Ver
-                                                </a>
-                                                &nbsp;&nbsp;
-                                                <a href="#" type="button" class="btn btn-xs btn-primary">
-                                                    <i class="fa fa-pencil"></i>
-                                                    &nbsp; Editar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="vertical-align:middle;">
-                                                <img src="{% static 'distrib/img/gato-100x100.jpg' %}" alt="Foto de Candy" width="35">
-                                            </td>
-                                            <td style="vertical-align:middle;">Tomás</td>
-                                            <td style="vertical-align:middle;">Gato</td>
-                                            <td style="vertical-align:middle;">Macho</td>
-                                            <td>3</td>
-                                            <td style="text-align:right;vertical-align:middle;">
-                                                <a href="#" type="button" class="btn btn-xs btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                    &nbsp; Ver
-                                                </a>
-                                                &nbsp;&nbsp;
-                                                <a href="#" type="button" class="btn btn-xs btn-primary">
-                                                    <i class="fa fa-pencil"></i>
-                                                    &nbsp; Editar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                               
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -496,7 +403,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="info-box">
-                                <span class="info-box-icon" style="background:url('distrib/img/gato-100x100.jpg') right bottom;">
+                                <span class="info-box-icon" style="background:url({% static 'distrib/img/gato-100x100.jpg' %}) right bottom;">
                                 </span>
                                 <div class="info-box-content">
                                     <span class="info-box-number">
@@ -715,9 +622,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 3 -->
-    <script src="bower_components/jquery/distrib/jquery.min.js"></script>
+    <script src="{% static 'bower_components/jquery/distrib/jquery.min.js' %}"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="bower_components/bootstrap/distrib/js/bootstrap.min.js"></script>
+    <script src="{% static 'bower_components/bootstrap/distrib/js/bootstrap.min.js' %}"></script>
     <!-- AdminLTE App -->
     <script src="{% static 'distrib/js/adminlte.min.js' %}"></script>
     <!-- DataTables -->

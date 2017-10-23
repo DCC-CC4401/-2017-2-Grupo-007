@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^', include('Persona.urls', namespace='persona')),
     url(r'^denuncia/', include('Denuncia.urls', namespace='denuncia')),
     url(r'^animal/', include('Animal.urls', namespace='animal')),
+    url(r'^ong/', include('ONG.urls', namespace='ong')),
     url(r'^municipalidad/', include('Municipalidad.urls', namespace='municipalidad')),
 
 ]
