@@ -50,6 +50,7 @@ def home(request):
             return render(request, 'Landing.html', {'error': "Nombre de usuario o cotraseña invalidos"})
 
     else:
+
         if request.user.is_authenticated():
 
             user = request.user
@@ -119,5 +120,5 @@ def signup(request):
 
 def mylogout(request):
     logout(request)
-
+    
     return HttpResponseRedirect('/')
