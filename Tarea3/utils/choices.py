@@ -1,4 +1,4 @@
-tipoAnimal = (
+tipoAnimal = [
     ('PE', 'Perro'),
     ('GA', 'Gato'),
     ('AV', 'Ave'),
@@ -7,36 +7,36 @@ tipoAnimal = (
     ('CO', 'Conejo'),
     ('RO', 'Roedor'),
     ('BO', 'Bovino')
-)
+]
 
-sexoChoice = (
+sexoChoice = [
     ('F', 'Hembra'),
     ('M', 'Macho')
-)
+]
 
-sexoPersonaChoices = (
+sexoPersonaChoices = [
     ('F', 'Femenino'),
     ('M', 'Masculino')
-)
+]
 
-colorChoice = (
+colorChoice = [
     ('A', 'Amarillo'),
     ('C', 'Cafe'),
     ('N', 'Naranjo'),
     ('NE', 'Negro'),
     ('GR', 'Gris'),
     ('BL', 'Blanco')
-)
-heridoChoice = (
+]
+heridoChoice = [
     ('AB', 'Abandono en la Calle'),
     ('EX', 'Exposición a Temperaturas Extremas'),
     ('FA', 'Falta de Agua'),
     ('FC', 'Falta de Comida'),
     ('V', 'Violencia'),
     ('VA', 'Venta Ambulante')
-)
+]
 
-comunaChoice = (
+comunaChoice = [
     ('CE',' Cerrillos'),
     ('CO', 'Conchalí'),
     ('EB', 'El Bosque'),
@@ -54,11 +54,10 @@ comunaChoice = (
     ('RE', 'Renca'),
     ('QU', 'Quilicura'),
     ('VI', 'Vitacura')
-)
-
-estadoChoice = (
+]
+estadoChoice = [
     ('RE','Reportado'),
     ('CON', 'Consolidado'),
     ('VE', 'Verificadas'),
     ('DE', 'Desechadas')
-)
+]

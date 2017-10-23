@@ -39,7 +39,7 @@ def home(request):
             if group == "Municipalidad":
                 mun = Municipalidad.objects.get(usuario_id=user.id)
 
-                return HttpResponseRedirect(reverse('municipalidad:muni', args={'muni': mun}))
+                return HttpResponseRedirect(reverse('municipalidad:muni'))
 
             if group == "ONG":
                 ong = ONG.objects.get(usuario_id=user.id)
@@ -50,6 +50,7 @@ def home(request):
             return render(request, 'Landing.html', {'error': "Nombre de usuario o cotraseña invalidos"})
 
     else:
+        logout(request)
         return render(request, 'Landing.html', {})
 
 

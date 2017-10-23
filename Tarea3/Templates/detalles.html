@@ -30,7 +30,8 @@
 
         <table>
         <tr>
-            <th> ID</th>
+            <th> Estado</th>
+            <th> Estado actual</th>
             <th>Comuna</th>
             <th>Animal</th>
             <th>sexo</th>
@@ -39,14 +40,28 @@
         </tr>
 
         {% for Denuncia in data %}
+
             <tr>
 
-                <th>{{ Denuncia.id }}</th>
+                <th>
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <form method="POST" action="{% url 'municipalidad:gestion' Denuncia.id %}" class="post-form">{% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="save btn btn-default">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                        </form>
+                </th>
+                <th>{{ Denuncia.estado }}</th>
                 <th> {{ Denuncia.comuna }}</th>
                 <th>{{ Denuncia.tipo }}</th>
                 <th>{{ Denuncia.sexo }}</th>
                 <th>{{ Denuncia.herido }}</th>
                 <th>{{ Denuncia.fecha }}</th>
+
             </tr>
         {% endfor %}
     {% else %}

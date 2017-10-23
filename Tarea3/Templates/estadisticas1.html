@@ -30,7 +30,7 @@
 
     <table>
     <tr>
-        <th>Comuna</th>
+        <th>ID</th>
         <th>Animal</th>
         <th>Herido</th>
         <th>Fecha de Denuncia</th>
@@ -39,7 +39,7 @@
     {% for Denuncia in ult_list %}
         <tr>
             <th> <a href="{% url 'municipalidad:detalles' Denuncia.id %}">{{ Denuncia.id }}</a></th>
-            <th>{{ Denuncia.tipo }}</th>
+            <th>{{ Denuncia.tipo}}</th>
             <th>{{ Denuncia.herido }}</th>
             <th>{{ Denuncia.fecha }}</th>
         </tr>

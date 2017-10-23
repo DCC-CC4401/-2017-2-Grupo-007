@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import Group, User
 from utils.choices import comunaChoice
 from Municipalidad.models import Municipalidad
+from utils.choices import estadoChoice
 
 
 class MunicipalidadRegisterForm(forms.Form):
@@ -34,3 +35,7 @@ class MunicipalidadRegisterForm(forms.Form):
         muni.save()
 
         login(user.username, user.password)
+
+
+class Gestionar(forms.Form):
+    estado = forms.ChoiceField(widget=forms.Select(), choices=estadoChoice)
