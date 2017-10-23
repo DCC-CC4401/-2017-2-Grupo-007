@@ -43,21 +43,34 @@ def detalles(request, denuncia_id):
 
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
 def chartsPageMuni(request):
-    comuna='Santiago'
+    muni = Municipalidad.objects.get(usuario_id=request.user.id)
+    comuna = muni.comuna
+    #comuna='SA'
+    numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
+    numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
+    numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
+    numDenCerradas = Denuncia.objects.filter(comuna=comuna, estado='CE').count()
+    numDenDesechadas = Denuncia.objects.filter(comuna=comuna, estado='DE').count()
+    totalDen = numDenReportadas + numDenConsolidadas + numDenVerificadas + numDenCerradas + numDenDesechadas
     numEstComuna = 18 #consulta dummy
     numEstTotal = 149
+
     template = loader.get_template('chartsPageMuni.html')
     context = {
         'numEstComuna': numEstComuna,
         'numEstTotal': numEstTotal,
-        'comuna': comuna
+        'comuna': comuna,
+        'numDenReportadas': numDenReportadas,
+        'numDenConsolidadas': numDenConsolidadas,
+        'numDenVerificadas': numDenVerificadas,
+        'numDenCerradas': numDenCerradas,
+        'numDenDesechadas': numDenDesechadas,
+        'totalDen': totalDen
     }
     print(context)
     return HttpResponse(template.render(context, request))
 
-=======
 
 def gestion(request, denuncia_id):
     if request.POST:
@@ -70,4 +83,3 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
->>>>>>> c67920e38b6634382886ebe087c67d8c2c45df0d
