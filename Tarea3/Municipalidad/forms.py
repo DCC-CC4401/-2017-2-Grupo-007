@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import login
 from django.contrib.auth.models import Group, User
 from utils.choices import comunaChoice
 from Municipalidad.models import Municipalidad
@@ -17,6 +18,8 @@ class MunicipalidadRegisterForm(forms.Form):
     foto = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control'}), required=True)
 
     def is_valid(self):
+        super(MunicipalidadRegisterForm, self).is_valid()
+
         return self.cleaned_data['tipo'] == 'Municipalidad'
 
     def save(self):
@@ -24,8 +27,10 @@ class MunicipalidadRegisterForm(forms.Form):
 
         user = User.objects.create_user(username=self.cleaned_data['username'], password=self.cleaned_data['password'])
 
-        group.user_set.all(user)
+        group.user_set.add(user)
 
         muni = Municipalidad(nombre=self.cleaned_data['nombre'], comuna=self.cleaned_data['comuna'],
                              direccion=self.cleaned_data['dierccion'], foto=self.cleaned_data['foto'], usuario=user)
         muni.save()
+
+        login(user.username, user.password)

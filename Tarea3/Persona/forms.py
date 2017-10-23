@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import login
 from utils.choices import sexoPersonaChoices
 from django.contrib.auth.models import Group, User
 from Persona.models import Persona
@@ -19,6 +20,8 @@ class PersonRegisterForm(forms.Form):
     foto = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control'}), required=True)
 
     def is_valid(self):
+        super(PersonRegisterForm, self).is_valid()
+
         return self.cleaned_data['tipo'] == 'Persona'
 
     def save(self):
@@ -26,9 +29,11 @@ class PersonRegisterForm(forms.Form):
 
         user = User.objects.create_user(username=self.cleaned_data['username'], password=self.cleaned_data['password'])
 
-        group.user_set.all(user)
+        group.user_set.add(user)
 
         person = Persona(nombre=self.cleaned_data['nombre'], rut=self.cleaned_data['rut'],
                          email=self.cleaned_data['email'], fono=self.cleaned_data['telefono'],
                          sexo=self.cleaned_data['sexo'], usuario=user)
         person.save()
+
+        login(user.username, user.password)

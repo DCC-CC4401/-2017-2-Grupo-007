@@ -32,19 +32,16 @@ def home(request):
             print(group)
 
             if group == "Administrador" or group == "Persona":
-
                 persona = Persona.objects.get(usuario_id=user.id)
 
                 return render(request, 'Landing.html', {'persona': persona})
 
             if group == "Municipalidad":
-
                 mun = Municipalidad.objects.get(usuario_id=user.id)
 
                 return HttpResponseRedirect(reverse('municipalidad:muni', args={'muni': mun}))
 
             if group == "ONG":
-
                 ong = ONG.objects.get(usuario_id=user.id)
 
                 return HttpResponseRedirect('/')  ## TODO: implementar ONG
@@ -60,6 +57,30 @@ def signup(request):
     if request.POST:
         print(request.POST)
 
+        form_persona = PersonRegisterForm(request.POST)
+        form_muni = MunicipalidadRegisterForm(request.POST)
+        form_ong = ONGRegisterForm(request.POST)
+
+        if form_persona.is_valid():
+            print("Persona valida")
+            form_persona.save()
+        else:
+            print("Persona invalida")
+
+        if form_muni.is_valid():
+            print("Muni valida")
+            form_muni.save()
+        else:
+            print("Muni invalida")
+
+        if form_ong.is_valid():
+            print("ONG valida")
+            form_ong.save()
+        else:
+            print("ONG invalida")
+
+        return HttpResponseRedirect("/")
+
     else:
 
         form_persona = PersonRegisterForm()
@@ -67,3 +88,9 @@ def signup(request):
         form_ong = ONGRegisterForm()
 
         return render(request, 'signup.html', {'person': form_persona, 'muni': form_muni, 'ong': form_ong})
+
+
+def mylogout(request):
+    logout(request)
+
+    return HttpResponseRedirect('/')

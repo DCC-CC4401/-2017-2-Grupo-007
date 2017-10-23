@@ -18,63 +18,67 @@
                 <button class="btn btn-lg btn-primary" id="ong">ONG</button>
             </div>
 
-            <form method="post" style="margin-top: 4%;">
-                <div id="form-person" style="display: none">
-                    <table class="table">
-                        {% for field in person.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
+            <form method="post" style="margin-top: 4%; display: none" id="form_person">
+                {% csrf_token %}
+                <table class="table">
+                    {% for field in person.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    {% for field in person.visible_fields %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-                        {% for field in person.visible_fields %}
-                            <tr>
-                                <td>{{ field.label_tag }}</td>
-                                <td>{{ field }}</td>
-                                <td>{{ field.errors }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
+                <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%"
+                        onclick="$('#form_person').submit()">
+                    Registrarse
+                </button>
+            </form>
 
-                    <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%">Registrarse</button>
+            <form method="post" style="margin-top: 4%; display: none" id="form_muni">
+                {% csrf_token %}
+                <table class="table">
+                    {% for field in muni.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    {% for field in muni.visible_fields %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-                </div>
+                <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%"
+                        onclick="$('#form_muni').submit()">
+                    Registrarse
+                </button>
+            </form>
 
-                <div id="form-muni"  style="display: none">
-                    <table class="table">
-                        {% for field in muni.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
+            <form method="post" style="margin-top: 4%; display: none" id="form_ong">
+                {% csrf_token %}
+                <table class="table">
+                    {% for field in ong.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    {% for field in ong.visible_fields %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-                        {% for field in muni.visible_fields %}
-                            <tr>
-                                <td>{{ field.label_tag }}</td>
-                                <td>{{ field }}</td>
-                                <td>{{ field.errors }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-
-                    <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%">Registrarse</button>
-
-                </div>
-
-                <div id="form-ong"  style="display: none">
-                    <table class="table">
-                        {% for field in ong.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
-
-                        {% for field in ong.visible_fields %}
-                            <tr>
-                                <td>{{ field.label_tag }}</td>
-                                <td>{{ field }}</td>
-                                <td>{{ field.errors }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-
-                    <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%">Registrarse</button>
-
-                </div>
+                <button type="submit" class="btn btn-lg btn-success" style="margin-left: 32%"
+                        onclick="$('#form_ong').submit()">
+                    Registrarse
+                </button>
             </form>
 
         </div>
@@ -85,17 +89,17 @@
         <script>
             $('#person').on('click', function () {
                 $('.gone').css('display', 'none');
-                $('#form-person').css('display', 'block')
+                $('#form_person').css('display', 'block')
             });
 
             $('#muni').on('click', function () {
                 $('.gone').css('display', 'none');
-                $('#form-muni').css('display', 'block')
+                $('#form_muni').css('display', 'block')
             });
 
             $('#ong').on('click', function () {
                 $('.gone').css('display', 'none');
-                $('#form-ong').css('display', 'block')
+                $('#form_ong').css('display', 'block')
             })
         </script>
 
