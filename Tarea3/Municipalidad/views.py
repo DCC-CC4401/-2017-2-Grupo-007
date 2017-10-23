@@ -44,37 +44,36 @@ def detalles(request, denuncia_id):
     return HttpResponse(template.render(context, request))
 
 def chartsPageMuni(request):
-    muni = Municipalidad.objects.get(usuario_id=request.user.id)
-    comuna = muni.comuna
-    #comuna='SA'
-    numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
-    numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
-    numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
-    numDenCerradas = Denuncia.objects.filter(comuna=comuna, estado='CE').count()
-    numDenDesechadas = Denuncia.objects.filter(comuna=comuna, estado='DE').count()
-    totalDen = numDenReportadas + numDenConsolidadas + numDenVerificadas + numDenCerradas + numDenDesechadas
-    numEstComuna = 18 #consulta dummy
-    numEstTotal = 149
+    if request.user.is_authenticated:
+        #muni = Municipalidad.objects.get(usuario_id=request.user.id)
+        #comuna = muni.comuna
+        comuna='SA'
+        numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
+        numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
+        numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
+        numDenCerradas = Denuncia.objects.filter(comuna=comuna, estado='CE').count()
+        numDenDesechadas = Denuncia.objects.filter(comuna=comuna, estado='DE').count()
+        totalDen = numDenReportadas + numDenConsolidadas + numDenVerificadas + numDenCerradas + numDenDesechadas
+        numEstComuna = 18 #consulta dummy
+        numEstTotal = 149 #consulta dummy
 
-    template = loader.get_template('chartsPageMuni.html')
-    context = {
-        'numEstComuna': numEstComuna,
-        'numEstTotal': numEstTotal,
-        'comuna': comuna,
-        'numDenReportadas': numDenReportadas,
-        'numDenConsolidadas': numDenConsolidadas,
-        'numDenVerificadas': numDenVerificadas,
-        'numDenCerradas': numDenCerradas,
-        'numDenDesechadas': numDenDesechadas,
-        'totalDen': totalDen
-    }
-    print(context)
-    return HttpResponse(template.render(context, request))
+        template = loader.get_template('chartsPageMuni.html')
+        context = {
+            'numEstComuna': numEstComuna,
+            'numEstTotal': numEstTotal,
+            'comuna': comuna,
+            'numDenReportadas': numDenReportadas,
+            'numDenConsolidadas': numDenConsolidadas,
+            'numDenVerificadas': numDenVerificadas,
+            'numDenCerradas': numDenCerradas,
+            'numDenDesechadas': numDenDesechadas,
+            'totalDen': totalDen
+        }
+        print(context)
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('/')
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397
 def gestion(request, denuncia_id):
     if request.POST:
         estado = request.POST.get('estado')
@@ -86,7 +85,3 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
-<<<<<<< HEAD
-=======
-
->>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397
