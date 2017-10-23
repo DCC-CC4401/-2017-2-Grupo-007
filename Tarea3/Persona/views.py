@@ -50,7 +50,6 @@ def home(request):
             return render(request, 'Landing.html', {'error': "Nombre de usuario o cotraseña invalidos"})
 
     else:
-        logout(request)
         return render(request, 'Landing.html', {})
 
 

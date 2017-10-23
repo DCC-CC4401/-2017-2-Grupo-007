@@ -14,7 +14,12 @@ def ficha(request, animal_id):
 
 
 def enadopcion(request):
-    if request.user.groups.all()[0].name == "Persona":
+    try:
+        test = request.user.groups.all()[0].name == "Persona"
+    except:
+        test = False
+
+    if test:
         ult_list = Animal.objects.order_by('-fecha_ingreso')[:5]
         template = loader.get_template('ong_adopcion.html')
         context = {
