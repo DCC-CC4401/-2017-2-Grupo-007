@@ -43,7 +43,6 @@ def detalles(request, denuncia_id):
 
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
 def chartsPageMuni(request):
     comuna='Santiago'
     numEstComuna = 18 #consulta dummy
@@ -57,8 +56,6 @@ def chartsPageMuni(request):
     print(context)
     return HttpResponse(template.render(context, request))
 
-=======
-
 def gestion(request, denuncia_id):
     if request.POST:
         estado = request.POST.get('estado')
@@ -70,4 +67,4 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
->>>>>>> c67920e38b6634382886ebe087c67d8c2c45df0d
+

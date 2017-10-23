@@ -18,7 +18,7 @@
                 <button class="btn btn-lg btn-primary" id="ong">ONG</button>
             </div>
 
-            <form method="post" style="margin-top: 4%; display: none" id="form_person">
+            <form method="post" style="margin-top: 4%; display: none" id="form_person"  enctype="multipart/form-data">
                 {% csrf_token %}
                 <table class="table">
                     {% for field in person.hidden_fields %}
@@ -39,7 +39,7 @@
                 </button>
             </form>
 
-            <form method="post" style="margin-top: 4%; display: none" id="form_muni">
+            <form method="post" style="margin-top: 4%; display: none" id="form_muni"  enctype="multipart/form-data">
                 {% csrf_token %}
                 <table class="table">
                     {% for field in muni.hidden_fields %}
@@ -60,7 +60,7 @@
                 </button>
             </form>
 
-            <form method="post" style="margin-top: 4%; display: none" id="form_ong">
+            <form method="post" style="margin-top: 4%; display: none" id="form_ong" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table class="table">
                     {% for field in ong.hidden_fields %}

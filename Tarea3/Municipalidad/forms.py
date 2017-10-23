@@ -4,6 +4,7 @@ from django.contrib.auth.models import Group, User
 from utils.choices import comunaChoice
 from Municipalidad.models import Municipalidad
 from utils.choices import estadoChoice
+from django.core.files.storage import FileSystemStorage
 
 
 class MunicipalidadRegisterForm(forms.Form):
@@ -29,6 +30,15 @@ class MunicipalidadRegisterForm(forms.Form):
         user = User.objects.create_user(username=self.cleaned_data['username'], password=self.cleaned_data['password'])
 
         group.user_set.add(user)
+
+        file = self.cleaned_data['foto']
+
+        fs = FileSystemStorage()
+
+        filename = fs.save(file.name, file)
+        uploaded_file_url = fs.url(filename)
+
+        print(uploaded_file_url)
 
         muni = Municipalidad(nombre=self.cleaned_data['nombre'], comuna=self.cleaned_data['comuna'],
                              direccion=self.cleaned_data['dierccion'], foto=self.cleaned_data['foto'], usuario=user)

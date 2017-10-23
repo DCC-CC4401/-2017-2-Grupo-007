@@ -1,9 +1,9 @@
 from django import forms
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from utils.choices import sexoPersonaChoices
 from django.contrib.auth.models import Group, User
 from Persona.models import Persona
-
+from django.core.files.storage import FileSystemStorage
 
 class PersonRegisterForm(forms.Form):
     tipo = forms.CharField(widget=forms.HiddenInput(), initial='Persona')
@@ -31,9 +31,16 @@ class PersonRegisterForm(forms.Form):
 
         group.user_set.add(user)
 
+        file = self.cleaned_data['foto']
+
+        fs = FileSystemStorage()
+
+        filename = fs.save(file.name, file)
+        uploaded_file_url = fs.url(filename)
+
+        print(uploaded_file_url)
+
         person = Persona(nombre=self.cleaned_data['nombre'], rut=self.cleaned_data['rut'],
                          email=self.cleaned_data['email'], fono=self.cleaned_data['telefono'],
-                         sexo=self.cleaned_data['sexo'], usuario=user)
+                         sexo=self.cleaned_data['sexo'], usuario=user, foto=self.cleaned_data['foto'])
         person.save()
-
-        login(user.username, user.password)
