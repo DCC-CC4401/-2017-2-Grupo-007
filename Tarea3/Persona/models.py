@@ -10,6 +10,6 @@ class Persona(models.Model):
     fono = models.CharField(max_length=20)
     sexo = models.CharField(max_length=1, choices=sexoPersonaChoices)
     usuario = models.ForeignKey(User)
-    foto = models.ImageField(null= True)
+    foto = models.ImageField(upload_to='fotos/', null=True)
 
 

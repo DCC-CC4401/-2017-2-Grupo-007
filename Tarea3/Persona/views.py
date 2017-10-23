@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.core.files.storage import FileSystemStorage
 from django.core.urlresolvers import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from Persona.models import Persona
 from Municipalidad.models import Municipalidad
 from ONG.models import ONG
@@ -32,19 +32,16 @@ def home(request):
             print(group)
 
             if group == "Administrador" or group == "Persona":
-
                 persona = Persona.objects.get(usuario_id=user.id)
 
                 return render(request, 'Landing.html', {'persona': persona})
 
             if group == "Municipalidad":
-
                 mun = Municipalidad.objects.get(usuario_id=user.id)
 
                 return HttpResponseRedirect(reverse('municipalidad:muni'))
 
             if group == "ONG":
-
                 ong = ONG.objects.get(usuario_id=user.id)
 
                 return HttpResponseRedirect('/')  ## TODO: implementar ONG
@@ -53,13 +50,64 @@ def home(request):
             return render(request, 'Landing.html', {'error': "Nombre de usuario o cotraseña invalidos"})
 
     else:
-        logout(request)
+
+        if request.user.is_authenticated():
+
+            user = request.user
+
+            group = user.groups.all()[0].name
+
+            print(group)
+
+            if group == "Administrador" or group == "Persona":
+                persona = Persona.objects.get(usuario_id=user.id)
+
+                return render(request, 'Landing.html', {'persona': persona})
+
+            if group == "Municipalidad":
+                mun = Municipalidad.objects.get(usuario_id=user.id)
+
+                return HttpResponseRedirect(reverse('municipalidad:muni'))
+
+            if group == "ONG":
+                ong = ONG.objects.get(usuario_id=user.id)
+
+                return HttpResponseRedirect('/')  ## TODO: implementar ONG
+
         return render(request, 'Landing.html', {})
 
 
 def signup(request):
-    if request.POST:
+    if request.POST and request.FILES['foto']:
         print(request.POST)
+        print(request.FILES)
+
+        form_persona = PersonRegisterForm(request.POST, request.FILES)
+        form_muni = MunicipalidadRegisterForm(request.POST, request.FILES)
+        form_ong = ONGRegisterForm(request.POST, request.FILES)
+
+        if form_persona.is_valid():
+            print("Persona valida")
+
+            form_persona.save()
+        else:
+            print("Persona invalida")
+
+        if form_muni.is_valid():
+            print("Muni valida")
+
+            form_muni.save()
+        else:
+            print("Muni invalida")
+
+        if form_ong.is_valid():
+            print("ONG valida")
+
+            form_ong.save()
+        else:
+            print("ONG invalida")
+
+        return HttpResponseRedirect("/")
 
     else:
 
@@ -68,3 +116,9 @@ def signup(request):
         form_ong = ONGRegisterForm()
 
         return render(request, 'signup.html', {'person': form_persona, 'muni': form_muni, 'ong': form_ong})
+
+
+def mylogout(request):
+    logout(request)
+    
+    return HttpResponseRedirect('/')

@@ -16,7 +16,7 @@ def muni(request):
 def ultimasdenuncias(request):
     if request.user.is_authenticated:
         comuna_actual = Municipalidad.objects.get(usuario_id=request.user.id).comuna
-        ult_list = Denuncia.objects.filter(comuna=comuna_actual)  # foreign key a comuna del usuario
+        ult_list = Denuncia.objects.filter(comuna=comuna_actual)
         ult_list.order_by('-fecha')[:5]
         template = loader.get_template('estadisticas1.html')
         context = {
@@ -71,7 +71,10 @@ def chartsPageMuni(request):
     print(context)
     return HttpResponse(template.render(context, request))
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397
 def gestion(request, denuncia_id):
     if request.POST:
         estado = request.POST.get('estado')
@@ -83,3 +86,7 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
+<<<<<<< HEAD
+=======
+
+>>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397

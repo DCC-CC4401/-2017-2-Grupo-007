@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Header -->
     <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="{% url 'persona:home' %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>CH</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -64,16 +64,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <!-- Navbar Right Menu -->
+
+            {% if user.is_authenticated %}
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{% url 'persona:logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+            {% endif %}
+
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li>
                         {% if user.is_authenticated %}
                             {% if persona %}
-                                <a data-toggle="modal" data-target="#myModal">{{ persona.nombre }}</a>
+                                    <img class="img-circle" src="{{ persona.foto.url }}"
+                                         style="display: inline-block; width: 10%; height: 10%">
+                                    <a style="display: inline-block">{{ persona.nombre }}</a>
                             {% endif %}
 
                             {% if muni %}
-                                <a data-toggle="modal" data-target="#myModal">{{ muni.nombre }}</a>
+                                <img class="img-circle" src="{{ muni.foto.url }}"
+                                         style="display: inline-block; width: 10%; height: 10%">
+                                    <a style="display: inline-block">{{ muni.nombre }}</a>
                             {% endif %}
                         {% else %}
                             <a data-toggle="modal" data-target="#myModal">Ingresar</a>
