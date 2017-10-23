@@ -30,3 +30,17 @@ def detalles(request, denuncia_id):
         'data': data
     }
     return HttpResponse(template.render(context, request))
+
+def chartsPageMuni(request):
+    comuna='Santiago'
+    numEstComuna = 18 #consulta dummy
+    numEstTotal = 149
+    template = loader.get_template('chartsPageMuni.html')
+    context = {
+        'numEstComuna': numEstComuna,
+        'numEstTotal': numEstTotal,
+        'comuna': comuna
+    }
+    print(context)
+    return HttpResponse(template.render(context, request))
+

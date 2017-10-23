@@ -1,0 +1,50 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block titulo %}
+    Estadisticas
+{% endblock titulo %}
+
+{% block aplicacion %}
+
+<head>
+    <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fint.js' %}"></script>
+
+    <script type="text/javascript">
+        FusionCharts.ready(function(){
+            var revenueChart = new FusionCharts({
+                "type": "column2d",
+                "renderAt": "chartContainer",
+                "width": "500",
+                "height": "300",
+                "dataFormat": "json",
+                "dataSource":  {
+                    "chart": {
+                        "caption": "Esterilizaciones en {{ comuna }}",
+                        "xAxisName": "Esterilizaciones",
+                        "yAxisName": "Cantidad",
+                        "theme": "fint"
+                    },
+                "data": [
+                    {
+                    "label": "{{ comuna }}",
+                    "value": "{{ numEstComuna }}"
+                    },
+                    {
+                    "label": "Total",
+                    "value": "{{ numEstTotal }}"
+                    }
+                ]}
+            });
+        revenueChart.render();
+        })
+</script>
+</head>
+<body>
+
+    <div id="chartContainer">FusionCharts XT will load here!</div>
+
+</body>
+{% endblock aplicacion %}
+</html>
