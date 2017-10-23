@@ -3,6 +3,7 @@ from Animal.models import Animal
 from django.template import loader
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 def ficha(request, animal_id):
     data = Animal.objects.filter(id=animal_id)
@@ -20,7 +21,7 @@ def enadopcion(request):
         test = False
 
     if test:
-        ult_list = Animal.objects.order_by('-fecha_ingreso')[:5]
+        ult_list = Animal.objects.order_by('+fecha_ingreso')[:10]
         template = loader.get_template('ong_adopcion.html')
         context = {
             'ult_list': ult_list,
@@ -28,4 +29,4 @@ def enadopcion(request):
         print(context)
         return HttpResponse(template.render(context, request))
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect(reverse('ong:onghome'))
