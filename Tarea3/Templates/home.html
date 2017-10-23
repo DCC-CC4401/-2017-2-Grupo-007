@@ -81,11 +81,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li>
                         {% if user.is_authenticated %}
                             {% if persona %}
-                                <a data-toggle="modal" data-target="#myModal">{{ persona.nombre }}</a>
+                                    <img class="img-circle" src="{{ persona.foto.url }}"
+                                         style="display: inline-block; width: 10%; height: 10%">
+                                    <a style="display: inline-block">{{ persona.nombre }}</a>
                             {% endif %}
 
                             {% if muni %}
-                                <a data-toggle="modal" data-target="#myModal">{{ muni.nombre }}</a>
+                                <img class="img-circle" src="{{ muni.foto.url }}"
+                                         style="display: inline-block; width: 10%; height: 10%">
+                                    <a style="display: inline-block">{{ muni.nombre }}</a>
                             {% endif %}
                         {% else %}
                             <a data-toggle="modal" data-target="#myModal">Ingresar</a>

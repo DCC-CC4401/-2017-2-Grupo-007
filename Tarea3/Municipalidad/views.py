@@ -67,3 +67,4 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
+
