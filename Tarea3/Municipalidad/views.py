@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from Denuncia.models import Denuncia
+from Municipalidad.models import Municipalidad
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
+from .forms import Gestionar
 
 
 # Create your views here.
@@ -10,18 +13,23 @@ def muni(request):
 
 
 def ultimasdenuncias(request):
-    ult_list = Denuncia.objects.filter(comuna='SA')  # foreign key a comuna del usuario
-    ult_list.order_by('-fecha')[:5]
-    template = loader.get_template('estadisticas1.html')
-    context = {
-        'ult_list': ult_list,
-    }
-    print(context)
-    return HttpResponse(template.render(context, request))
+    if request.user.is_authenticated:
+        comuna_actual = Municipalidad.objects.get(usuario_id=request.user.id).comuna
+        ult_list = Denuncia.objects.filter(comuna=comuna_actual)  # foreign key a comuna del usuario
+        ult_list.order_by('-fecha')[:5]
+        template = loader.get_template('estadisticas1.html')
+        context = {
+            'ult_list': ult_list,
+        }
+        print(context)
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('/')
 
 
 def tablas(request):
     return render(request, 'TablasMuni.html', {})
+
 
 def detalles(request, denuncia_id):
     data = Denuncia.objects.filter(id=denuncia_id)
@@ -30,3 +38,15 @@ def detalles(request, denuncia_id):
         'data': data
     }
     return HttpResponse(template.render(context, request))
+
+
+def gestion(request, denuncia_id):
+    if request.POST:
+        estado = request.POST.get('estado')
+        data = Denuncia.objects.get(id=denuncia_id)
+        data.estado = estado
+        data.save()
+        return HttpResponseRedirect('/')
+    else:
+        form = Gestionar()
+        return render(request, 'detalles.html', {'form': form})

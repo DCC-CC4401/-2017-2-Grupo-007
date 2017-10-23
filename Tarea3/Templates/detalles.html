@@ -30,24 +30,32 @@
 
         <table>
         <tr>
+            <th> Estado</th>
             <th> ID</th>
             <th>Comuna</th>
             <th>Animal</th>
             <th>sexo</th>
             <th>Herido</th>
             <th>Fecha de Denuncia</th>
+            <th> Guarda Cambios</th>
         </tr>
 
         {% for Denuncia in data %}
-            <tr>
 
-                <th>{{ Denuncia.id }}</th>
-                <th> {{ Denuncia.comuna }}</th>
-                <th>{{ Denuncia.tipo }}</th>
-                <th>{{ Denuncia.sexo }}</th>
-                <th>{{ Denuncia.herido }}</th>
-                <th>{{ Denuncia.fecha }}</th>
-            </tr>
+                <tr>
+
+                    <th> <form method="POST" class="post-form">{% csrf_token %}{{ form.as_p }} </form></th>
+                    <th>{{ Denuncia.id }}</th>
+                    <th> {{ Denuncia.comuna }}</th>
+                    <th>{{ Denuncia.tipo }}</th>
+                    <th>{{ Denuncia.sexo }}</th>
+                    <th>{{ Denuncia.herido }}</th>
+                    <th>{{ Denuncia.fecha }}</th>
+                    <th>
+                        <button type="submit" class="save btn btn-default">Enviar</button>
+                    </th>
+
+                </tr>
         {% endfor %}
     {% else %}
         <p>No hay informacion disponible.</p>

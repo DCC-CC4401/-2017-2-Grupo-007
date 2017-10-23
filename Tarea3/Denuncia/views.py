@@ -18,7 +18,17 @@ def denunciar(request):
         color = request.POST.get('color')
         herido = request.POST.get('herido')
 
-        denunciar_obj = Denuncia(comuna=comuna, direccion=direccion, tipo=tipo, sexo=sexo, color=color, herido=herido)
+        if request.user.is_authenticated:
+            print("Logged in")
+            print(request.user.id)
+
+            person = Persona.objects.get(usuario_id=request.user.id)
+            denunciar_obj = Denuncia(comuna=comuna, direccion=direccion, tipo=tipo, sexo=sexo, color=color,
+                                     herido=herido, persona=person)
+        else:
+            denunciar_obj = Denuncia(comuna=comuna, direccion=direccion, tipo=tipo, sexo=sexo, color=color,
+                                     herido=herido)
+
         denunciar_obj.save()
 
         return HttpResponseRedirect('/')
