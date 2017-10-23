@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from Denuncia.models import Denuncia
+from django.core.urlresolvers import reverse
 from Municipalidad.models import Municipalidad
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -33,10 +34,13 @@ def tablas(request):
 
 def detalles(request, denuncia_id):
     data = Denuncia.objects.filter(id=denuncia_id)
+    form = Gestionar()
     template = loader.get_template('detalles.html')
     context = {
-        'data': data
+        'data': data,
+        'form': form
     }
+
     return HttpResponse(template.render(context, request))
 
 
@@ -46,7 +50,8 @@ def gestion(request, denuncia_id):
         data = Denuncia.objects.get(id=denuncia_id)
         data.estado = estado
         data.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect(reverse('municipalidad:ultimasdenuncias'))
+
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
