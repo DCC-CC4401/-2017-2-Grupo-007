@@ -39,7 +39,7 @@
     {% for Denuncia in ult_list %}
         <tr>
             <th> <a href="{% url 'municipalidad:detalles' Denuncia.id %}">{{ Denuncia.id }}</a></th>
-            <th>{{ Denuncia.tipo }}</th>
+            <th>{{ Denuncia.tipo}}</th>
             <th>{{ Denuncia.herido }}</th>
             <th>{{ Denuncia.fecha }}</th>
         </tr>

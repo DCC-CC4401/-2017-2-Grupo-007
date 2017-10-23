@@ -16,6 +16,7 @@ def ultimasdenuncias(request):
     context = {
         'ult_list': ult_list,
     }
+    print(context)
     return HttpResponse(template.render(context, request))
 
 
