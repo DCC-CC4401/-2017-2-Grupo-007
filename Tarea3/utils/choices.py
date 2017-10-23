@@ -22,8 +22,12 @@ colorChoice = (
     ('BL', 'Blanco')
 )
 heridoChoice = (
-    ('S', 'Si'),
-    ('N', 'No')
+    ('AB', 'Abandono en la Calle'),
+    ('EX', 'Exposición a Temperaturas Extremas'),
+    ('FA', 'Falta de Agua'),
+    ('FC', 'Falta de Comida'),
+    ('V', 'Violencia'),
+    ('VA', 'Venta Ambulante')
 )
 
 comunaChoice = (
