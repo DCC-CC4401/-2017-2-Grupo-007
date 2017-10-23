@@ -32,16 +32,14 @@
     <tr>
         <th>Comuna</th>
         <th>Animal</th>
-        <th>sexo</th>
         <th>Herido</th>
         <th>Fecha de Denuncia</th>
     </tr>
 
     {% for Denuncia in ult_list %}
         <tr>
-            <th><a href="#"> {{ Denuncia.comuna }}</a></th>
+            <th> <a href="{% url 'municipalidad:detalles' Denuncia.id %}">{{ Denuncia.id }}</a></th>
             <th>{{ Denuncia.tipo }}</th>
-            <th>{{ Denuncia.sexo }}</th>
             <th>{{ Denuncia.herido }}</th>
             <th>{{ Denuncia.fecha }}</th>
         </tr>

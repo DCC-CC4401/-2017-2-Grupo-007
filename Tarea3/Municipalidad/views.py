@@ -21,3 +21,11 @@ def ultimasdenuncias(request):
 
 def tablas(request):
     return render(request, 'TablasMuni.html', {})
+
+def detalles(request, denuncia_id):
+    data = Denuncia.objects.filter(id=denuncia_id)
+    template = loader.get_template('detalles.html')
+    context = {
+        'data': data
+    }
+    return HttpResponse(template.render(context, request))

@@ -1,0 +1,59 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block titulo %}
+    Denuncias más recientes
+{% endblock titulo %}
+
+{% block aplicacion %}
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 90%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+    {% if data %}
+
+        <table>
+        <tr>
+            <th> ID</th>
+            <th>Comuna</th>
+            <th>Animal</th>
+            <th>sexo</th>
+            <th>Herido</th>
+            <th>Fecha de Denuncia</th>
+        </tr>
+
+        {% for Denuncia in data %}
+            <tr>
+
+                <th>{{ Denuncia.id }}</th>
+                <th> {{ Denuncia.comuna }}</th>
+                <th>{{ Denuncia.tipo }}</th>
+                <th>{{ Denuncia.sexo }}</th>
+                <th>{{ Denuncia.herido }}</th>
+                <th>{{ Denuncia.fecha }}</th>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <p>No hay informacion disponible.</p>
+    {% endif %}
+    </table>
+
+    </body>
+{% endblock aplicacion %}
+</html>
