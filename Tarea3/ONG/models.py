@@ -9,5 +9,5 @@ class ONG(models.Model):
     nombre = models.CharField(max_length=50)
     ubicacion = models.CharField(max_length=50)
     foto = models.ImageField()
-    usuario = models.ForeignKey(User)
+    administrador = models.ForeignKey(User)
 

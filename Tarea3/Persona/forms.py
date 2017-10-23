@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group, User
 from Persona.models import Persona
 from django.core.files.storage import FileSystemStorage
 
+
 class PersonRegisterForm(forms.Form):
     tipo = forms.CharField(widget=forms.HiddenInput(), initial='Persona')
     nombre = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
