@@ -71,10 +71,7 @@ def chartsPageMuni(request):
     print(context)
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397
 def gestion(request, denuncia_id):
     if request.POST:
         estado = request.POST.get('estado')
@@ -86,7 +83,3 @@ def gestion(request, denuncia_id):
     else:
         form = Gestionar()
         return render(request, 'detalles.html', {'form': form})
-<<<<<<< HEAD
-=======
-
->>>>>>> bef389f749dd73f2bf7aeaba929f9dc29c8c9397

@@ -21,7 +21,7 @@ def enadopcion(request):
         test = False
 
     if test:
-        ult_list = Animal.objects.order_by('+fecha_ingreso')[:10]
+        ult_list = Animal.objects.order_by('-fecha_ingreso')[:10]
         template = loader.get_template('ong_adopcion.html')
         context = {
             'ult_list': ult_list,
