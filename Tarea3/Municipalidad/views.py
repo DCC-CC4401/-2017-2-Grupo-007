@@ -37,10 +37,12 @@ def tablas(request):
 
 
 def detalles(request, denuncia_id):
+    muni = Municipalidad.objects.get(administrador_id=request.user.id)
     data = Denuncia.objects.filter(id=denuncia_id)
     form = Gestionar()
     template = loader.get_template('detalles.html')
     context = {
+        'muni': muni,
         'data': data,
         'form': form
     }
@@ -49,7 +51,7 @@ def detalles(request, denuncia_id):
 
 
 def chartsPageMuni(request):
-    muni = Municipalidad.objects.get(usuario_id=request.user.id)
+    muni = Municipalidad.objects.get(administrador_id=request.user.id)
     comuna = muni.comuna
     #comuna='SA'
     numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
@@ -61,7 +63,7 @@ def chartsPageMuni(request):
     numEstComuna = 18  # consulta dummy
     numEstTotal = 149  # consulta dummy
     if request.user.is_authenticated:
-        muni = Municipalidad.objects.get(usuario_id=request.user.id)
+        muni = Municipalidad.objects.get(administrador_id=request.user.id)
         comuna = muni.comuna
         #comuna='SA'
         numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()

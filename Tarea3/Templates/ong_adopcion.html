@@ -20,8 +20,8 @@
                 <tr>
                     <td style="vertical-align:middle;">{{ Animal.nombre }}</td>
                     <td style="vertical-align:middle;">{{ Animal.tipo }}</td>
-                    <td style="vertical-align:middle;">{{ Animal.foto.url }}</td>
-                    <td style="vertical-align:middle;">{{ Animal.sexo }}</td>
+                    <td style="vertical-align:middle;"><img src="{{ Animal.foto.url }}" width="20%" height="50%"></td>
+                    <td style="vertical-align:middle;">{{ Animal.get_sexo_display }}</td>
                     <td style="vertical-align:middle;">{{ Animal.edad }}</td>
                     <td style="vertical-align:middle;">{{ Animal.fecha_ingreso }}</td>
 

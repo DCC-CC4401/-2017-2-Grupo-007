@@ -5,6 +5,60 @@
     Denuncias más recientes
 {% endblock titulo %}
 
+{% block aside %}
+<aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img class="img-circle" src="{{ muni.foto.url }}"
+                         style="display: inline-block; width: 100%; height: 100%">
+                </div>
+                <div class="pull-left info">
+                    <!-- <br> -->
+                    <a style="display: inline-block">{{ muni.nombre }}</a>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <!-- Optionally, you can add icons to the links -->
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Denuncias</span>
+                    </a>
+                </li>
+                <li class="treeview active menu-open">
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i>
+                        <span>Estadísticas</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="{% url 'municipalidad:ultimasdenuncias' %}">
+                                <i class="fa fa-circle-o"></i>
+                                Denuncias
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="{% url 'municipalidad:chartsPageMuni' %}">
+                                <i class="fa fa-circle-o"></i>
+                                Graficos
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+{% endblock aside %}
+
 {% block aplicacion %}
     <head>
         <style>
@@ -55,9 +109,9 @@
                         </div>
                         </form>
                 </th>
-                <th>{{ Denuncia.estado }}</th>
-                <th> {{ Denuncia.comuna }}</th>
-                <th>{{ Denuncia.tipo }}</th>
+                <th>{{ Denuncia.get_estado_display }}</th>
+                <th> {{ Denuncia.get_comuna_display }}</th>
+                <th>{{ Denuncia.get_tipo_display }}</th>
                 <th>{{ Denuncia.sexo }}</th>
                 <th>{{ Denuncia.herido }}</th>
                 <th>{{ Denuncia.fecha }}</th>
