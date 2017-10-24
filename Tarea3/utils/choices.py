@@ -56,8 +56,9 @@ comunaChoice = [
     ('VI', 'Vitacura')
 ]
 estadoChoice = [
-    ('RE','Reportado'),
-    ('CON', 'Consolidado'),
-    ('VE', 'Verificadas'),
-    ('DE', 'Desechadas')
+    ('RE', 'Reportado'),
+    ('CO', 'Consolidado'),
+    ('VE', 'Verificado'),
+    ('CE', 'Cerrado'),
+    ('DE', 'Desechado')
 ]
