@@ -23,6 +23,8 @@ sdist/
 var/
 wheels/
 .idea/
+pantallazos/
+pantallazos.zip
 *.egg-info/
 .installed.cfg
 *.egg

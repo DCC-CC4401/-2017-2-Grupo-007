@@ -13,7 +13,6 @@ from ONG.forms import ONGRegisterForm
 
 def home(request):
     if request.POST:
-        print(request.POST)
 
         username = request.POST.get('username')
         password = request.POST.get('pass')
@@ -23,13 +22,7 @@ def home(request):
         if user is not None:
             login(request, user)
 
-            print("Logged in")
-            print(user)
-            print(user.groups.all())
-
             group = user.groups.all()[0].name
-
-            print(group)
 
             if group == "Administrador" or group == "Persona":
                 persona = Persona.objects.get(usuario_id=user.id)
@@ -57,8 +50,6 @@ def home(request):
 
             group = user.groups.all()[0].name
 
-            print(group)
-
             if group == "Administrador" or group == "Persona":
                 persona = Persona.objects.get(usuario_id=user.id)
 
@@ -79,33 +70,19 @@ def home(request):
 
 def signup(request):
     if request.POST and request.FILES['foto']:
-        print(request.POST)
-        print(request.FILES)
 
         form_persona = PersonRegisterForm(request.POST, request.FILES)
         form_muni = MunicipalidadRegisterForm(request.POST, request.FILES)
         form_ong = ONGRegisterForm(request.POST, request.FILES)
 
         if form_persona.is_valid():
-            print("Persona valida")
-
             form_persona.save()
-        else:
-            print("Persona invalida")
 
         if form_muni.is_valid():
-            print("Muni valida")
-
             form_muni.save()
-        else:
-            print("Muni invalida")
 
         if form_ong.is_valid():
-            print("ONG valida")
-
             form_ong.save()
-        else:
-            print("ONG invalida")
 
         return HttpResponseRedirect("/")
 

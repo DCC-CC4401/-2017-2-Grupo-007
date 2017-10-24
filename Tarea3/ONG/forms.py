@@ -32,7 +32,5 @@ class ONGRegisterForm(forms.Form):
         filename = fs.save(file.name, file)
         uploaded_file_url = fs.url(filename)
 
-        print(uploaded_file_url)
-
         ong = ONG(nombre=self.cleaned_data['nombre'], ubicacion=self.cleaned_data['ubicacion'], foto=self.cleaned_data['foto'], administrador=user)
         ong.save()

@@ -39,8 +39,6 @@ class PersonRegisterForm(forms.Form):
         filename = fs.save(file.name, file)
         uploaded_file_url = fs.url(filename)
 
-        print(uploaded_file_url)
-
         person = Persona(nombre=self.cleaned_data['nombre'], rut=self.cleaned_data['rut'],
                          email=self.cleaned_data['email'], fono=self.cleaned_data['telefono'],
                          sexo=self.cleaned_data['sexo'], usuario=user, foto=self.cleaned_data['foto'])

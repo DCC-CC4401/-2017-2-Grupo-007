@@ -38,8 +38,6 @@ class MunicipalidadRegisterForm(forms.Form):
         filename = fs.save(file.name, file)
         uploaded_file_url = fs.url(filename)
 
-        print(uploaded_file_url)
-
         muni = Municipalidad(nombre=self.cleaned_data['nombre'], comuna=self.cleaned_data['comuna'],
                              direccion=self.cleaned_data['direccion'], foto=self.cleaned_data['foto'], administrador=user)
         muni.save()

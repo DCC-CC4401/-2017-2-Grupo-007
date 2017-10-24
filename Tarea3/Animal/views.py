@@ -14,7 +14,6 @@ def ficha(request, animal_id):
         person = None
     data = Animal.objects.filter(id=animal_id)
     template = loader.get_template('fichaAnimal.html')
-    print(Animal.nombre)
     context = {
         'persona': person,
         'data': data
@@ -23,7 +22,6 @@ def ficha(request, animal_id):
 
 
 def enadopcion(request):
-    print("Aqui")
     try:
         test = request.user.groups.all()[0].name == "Persona"
         person = Persona.objects.get(usuario_id=request.user.id)

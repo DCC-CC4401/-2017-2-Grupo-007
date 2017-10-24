@@ -26,7 +26,6 @@ def ultimasdenuncias(request):
             'muni': muni,
             'ult_list': ult_list,
         }
-        print(context)
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('/')
@@ -53,7 +52,7 @@ def detalles(request, denuncia_id):
 def chartsPageMuni(request):
     muni = Municipalidad.objects.get(administrador_id=request.user.id)
     comuna = muni.comuna
-    #comuna='SA'
+    # comuna='SA'
     numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
     numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
     numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
@@ -65,7 +64,7 @@ def chartsPageMuni(request):
     if request.user.is_authenticated:
         muni = Municipalidad.objects.get(administrador_id=request.user.id)
         comuna = muni.comuna
-        #comuna='SA'
+        # comuna='SA'
         numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
         numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
         numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
@@ -92,7 +91,6 @@ def chartsPageMuni(request):
 
     else:
         return HttpResponseRedirect('/')
-
 
 
 def gestion(request, denuncia_id):
