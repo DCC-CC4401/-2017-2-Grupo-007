@@ -41,10 +41,8 @@ class MunicipalidadRegisterForm(forms.Form):
         print(uploaded_file_url)
 
         muni = Municipalidad(nombre=self.cleaned_data['nombre'], comuna=self.cleaned_data['comuna'],
-                             direccion=self.cleaned_data['dierccion'], foto=self.cleaned_data['foto'], administrador=user)
+                             direccion=self.cleaned_data['direccion'], foto=self.cleaned_data['foto'], administrador=user)
         muni.save()
-
-        login(user.username, user.password)
 
 
 class Gestionar(forms.Form):
