@@ -120,5 +120,5 @@ def signup(request):
 
 def mylogout(request):
     logout(request)
-    
+
     return HttpResponseRedirect('/')

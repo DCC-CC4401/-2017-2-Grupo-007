@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Soy un animal</title>
+    <title>Ficha Animal</title>
+
+
 </head>
 <body>
-
+{% if data %}
+ {% for Animal in data %}
+    <img src="{{ Animal.foto.url }}"></img>
+    <p>{{ Aninmal.name }}</p>
+    <p>{{ Animal.tipo }}</p>
+    <p>{{ Animal.ong_responsable }}</p>
+    <p>{{ Animal.color }}</p>
+ {% endfor%}
+{% else %}
+    <p>No se encuentra ficha de animal</p>
+{% endif %}
+<button type="submit" >Adoptar</button>
 </body>
 </html>
