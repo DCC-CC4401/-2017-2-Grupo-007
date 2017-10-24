@@ -4,6 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
+
 def ficha(request, animal_id):
     data = Animal.objects.filter(id=animal_id)
     template = loader.get_template('fichaAnimal.html')
