@@ -8,10 +8,15 @@ from django.core.urlresolvers import reverse
 
 
 def ficha(request, animal_id):
+    try:
+        person = Persona.objects.get(usuario_id=request.user.id)
+    except:
+        person = None
     data = Animal.objects.filter(id=animal_id)
     template = loader.get_template('fichaAnimal.html')
     print(Animal.nombre)
     context = {
+        'persona': person,
         'data': data
     }
     return HttpResponse(template.render(context, request))
@@ -37,6 +42,3 @@ def enadopcion(request):
     else:
 
         return HttpResponseRedirect(reverse('ong:onghome'))
-
-
-
