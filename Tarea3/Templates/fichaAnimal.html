@@ -8,16 +8,15 @@
 </head>
 <body>
 {% if data %}
- {% for Animal in data %}
-    <img src="{{ Animal.foto.url }}"></img>
-    <p>{{ Aninmal.name }}</p>
-    <p>{{ Animal.tipo }}</p>
-    <p>{{ Animal.ong_responsable }}</p>
-    <p>{{ Animal.color }}</p>
- {% endfor%}
+    {% for Animal in data %}
+        <img src="{{ Animal.foto.url }}">
+        <p>{{ Animal.nombre }}</p>
+        <p>{{ Animal.get_tipo_display }}</p>
+        <p>{{ Animal.ong_responsable.nombre }}</p>
+    {% endfor %}
 {% else %}
     <p>No se encuentra ficha de animal</p>
 {% endif %}
-<button type="submit" >Adoptar</button>
+<button type="submit">Adoptar</button>
 </body>
 </html>
