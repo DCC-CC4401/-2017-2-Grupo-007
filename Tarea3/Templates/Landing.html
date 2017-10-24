@@ -5,7 +5,7 @@
     Cholito
 {% endblock titulo %}
 {% block aside %}
-<aside class="main-sidebar">
+    <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar Menu -->
@@ -67,9 +67,9 @@
 {% endblock aside %}
 
 {% block aplicacion %}
-    <img src="{% static 'distrib/img/mapa.png' %}" style="width: 100%;" usemap="#locationsmap">
-
-    <map name="locationsmap">
-
-    </map>
+    {% if user.is_authenticated %}
+        <img src="{% static 'distrib/img/mapa_fav_pinned.PNG' %}" style="width: 100%;">
+    {% else %}
+        <img src="{% static 'distrib/img/mapa_pinned.PNG' %}" style="width: 100%;">
+    {% endif %}
 {% endblock aplicacion %}

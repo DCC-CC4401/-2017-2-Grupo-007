@@ -37,12 +37,12 @@ def home(request):
                 return render(request, 'Landing.html', {'persona': persona})
 
             if group == "Municipalidad":
-                mun = Municipalidad.objects.get(usuario_id=user.id)
+                mun = Municipalidad.objects.get(administrador_id=user.id)
 
                 return HttpResponseRedirect(reverse('municipalidad:muni'))
 
             if group == "ONG":
-                ong = ONG.objects.get(usuario_id=user.id)
+                ong = ONG.objects.get(administrador_id=user.id)
 
                 return HttpResponseRedirect('/')  ## TODO: implementar ONG
 
@@ -65,12 +65,12 @@ def home(request):
                 return render(request, 'Landing.html', {'persona': persona})
 
             if group == "Municipalidad":
-                mun = Municipalidad.objects.get(usuario_id=user.id)
+                mun = Municipalidad.objects.get(administrador_id=user.id)
 
                 return HttpResponseRedirect(reverse('municipalidad:muni'))
 
             if group == "ONG":
-                ong = ONG.objects.get(usuario_id=user.id)
+                ong = ONG.objects.get(administrador_id=user.id)
 
                 return HttpResponseRedirect('/')  ## TODO: implementar ONG
 

@@ -13,6 +13,6 @@ class Municipalidad(models.Model):
     )
     direccion = models.CharField(max_length=50)
     foto = models.ImageField()
-    usuario = models.ForeignKey(User)
+    administrador = models.ForeignKey(User)
 
 
