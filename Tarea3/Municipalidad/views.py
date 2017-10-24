@@ -45,9 +45,9 @@ def detalles(request, denuncia_id):
 
 def chartsPageMuni(request):
     if request.user.is_authenticated:
-        #muni = Municipalidad.objects.get(usuario_id=request.user.id)
-        #comuna = muni.comuna
-        comuna='SA'
+        muni = Municipalidad.objects.get(usuario_id=request.user.id)
+        comuna = muni.comuna
+        #comuna='SA'
         numDenReportadas = Denuncia.objects.filter(comuna=comuna, estado='RE').count()
         numDenConsolidadas = Denuncia.objects.filter(comuna=comuna, estado='CO').count()
         numDenVerificadas = Denuncia.objects.filter(comuna=comuna, estado='VE').count()
